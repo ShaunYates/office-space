@@ -1,2 +1,2 @@
-export * from './office.model';
+export * from './company.model';
 export * from './staff.model';
