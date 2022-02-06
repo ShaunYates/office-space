@@ -1,4 +1,4 @@
-export interface Office {
+export interface Company {
   id: string;
   name: string;
   physicalAddress: string;

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ih-app-client-shared-components-skeleton-list-ui',
+  selector: 'app-skeleton-list',
   template: `
     <ion-list>
       <ion-item>
@@ -47,7 +47,7 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [],
 })
-export class SkeletonListUiComponent {
+export class SkeletonListComponent {
   @Input() avatar = false;
   @Input() description = false;
 }

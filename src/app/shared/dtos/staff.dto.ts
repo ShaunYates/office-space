@@ -1,5 +1,5 @@
 export interface StaffDTO {
-  officeId: string;
+  companyId: string;
   firstName: string;
   lastName: string;
 }
