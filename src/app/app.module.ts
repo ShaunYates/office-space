@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { AvatarModule } from 'ngx-avatar';
@@ -40,6 +41,7 @@ import { ViewCompanyComponent } from './view-company/view-company.component';
     AvatarModule,
     FlexLayoutModule,
     IonicModule,
+    FormsModule,
     SkeletonListUiModule,
     EmptyContentUiModule,
   ],

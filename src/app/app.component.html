@@ -1,11 +1,13 @@
 <ion-content [fullscreen]="true">
-  <ng-container *ngIf="!busy">
+  <ng-container *ngIf="!loading">
     <ng-container *ngIf="companies?.length !== 0; else noItems">
-      <app-company-card [company]="company"></app-company-card>
+      <ng-container *ngFor="let company of companies">
+        <app-company-card [company]="company"></app-company-card>
+      </ng-container>
     </ng-container>
     <ng-template #noItems>
       <app-empty-content
-        [message]="No office spaces have been created."
+        [message]="'No office spaces have been created.'"
       ></app-empty-content>
     </ng-template>
     <button class="button button-float" ng-click="showActionsheet()">
@@ -13,5 +15,5 @@
     </button>
   </ng-container>
 
-  <app-skeleton-list *ngIf="busy"></app-skeleton-list>
+  <app-skeleton-list *ngIf="loading"></app-skeleton-list>
 </ion-content>

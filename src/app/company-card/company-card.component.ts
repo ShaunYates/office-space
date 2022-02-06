@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Company, Staff, StaffService } from '../shared';
 
 @Component({
@@ -20,7 +21,7 @@ export class CompanyCardComponent implements OnInit {
       .pipe(tap((staff) => (this.numberOfStaff = staff.length)));
   }
 
-  editCompany(): void {}
+  editCompany(company: Company): void {}
 
   toggleInfo(): void {
     this.toggle = !this.toggle;
