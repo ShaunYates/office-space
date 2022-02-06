@@ -10,7 +10,15 @@ import { AppComponent } from './app.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
 import { CreateCompanyComponent } from './create-company/create-company.component';
 import { EditCompanyComponent } from './edit-company/edit-company.component';
-import { SkeletonListUiModule } from './shared/components';
+import {
+  CompaniesService,
+  EmptyContentUiModule,
+  FilterStaffPipe,
+  SkeletonListUiModule,
+  StaffService,
+} from './shared';
+import { AddStaffMemberComponent } from './view-company/add-staff-member/add-staff-member.component';
+import { StaffListComponent } from './view-company/staff-list/staff-list.component';
 import { ViewCompanyComponent } from './view-company/view-company.component';
 
 @NgModule({
@@ -20,6 +28,9 @@ import { ViewCompanyComponent } from './view-company/view-company.component';
     ViewCompanyComponent,
     CompanyCardComponent,
     EditCompanyComponent,
+    StaffListComponent,
+    AddStaffMemberComponent,
+    FilterStaffPipe,
   ],
   imports: [
     BrowserModule,
@@ -30,8 +41,9 @@ import { ViewCompanyComponent } from './view-company/view-company.component';
     FlexLayoutModule,
     IonicModule,
     SkeletonListUiModule,
+    EmptyContentUiModule,
   ],
-  providers: [],
+  providers: [CompaniesService, StaffService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

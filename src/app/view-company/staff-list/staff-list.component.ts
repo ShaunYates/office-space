@@ -5,12 +5,12 @@ import { Company, Staff, StaffService } from 'src/app/shared';
 @Component({
   selector: 'app-staff-list',
   templateUrl: './staff-list.component.html',
-  styleUrls: ['./staff-list.component.scss'],
 })
 export class StaffListComponent implements OnInit {
   @Input() company!: Company;
   staffMembers$!: Observable<Staff[]>;
   staff: Staff[] = [];
+  searchTerm: undefined | string = undefined;
 
   constructor(private readonly staffService: StaffService) {}
 

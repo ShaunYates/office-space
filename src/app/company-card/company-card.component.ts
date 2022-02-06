@@ -5,7 +5,6 @@ import { Company, Staff, StaffService } from '../shared';
 @Component({
   selector: 'app-company-card',
   templateUrl: './company-card.component.html',
-  styleUrls: ['./company-card.component.scss'],
 })
 export class CompanyCardComponent implements OnInit {
   @Input() company!: Company;

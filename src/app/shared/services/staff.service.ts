@@ -12,12 +12,12 @@ export class StaffService {
 
   constructor(private readonly afs: AngularFirestore) {}
 
-  staff$(companyfId: string): Observable<Staff[]> {
+  staff$(companyId: string): Observable<Staff[]> {
     return this.afs
       .collection<Staff>(this.COLLECTION, (ref) =>
-        ref.where('companyId', '==', companyfId)
+        ref.where('companyId', '==', companyId)
       )
-      .valueChanges();
+      .valueChanges({ idField: 'id' });
   }
 
   async create(staff: StaffDTO): Promise<void> {
