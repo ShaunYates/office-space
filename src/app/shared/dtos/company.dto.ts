@@ -1,6 +1,6 @@
 export interface CompanyDTO {
   name: string;
-  physicalAddress: string;
+  address: string;
   email: string;
   phoneNumber: string;
   capacity: number;

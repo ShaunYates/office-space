@@ -1,7 +1,7 @@
 export interface Company {
   id: string;
   name: string;
-  physicalAddress: string;
+  address: string;
   email: string;
   phoneNumber: string;
   capacity: number;

@@ -1,55 +1,49 @@
-<ng-container *ngIf="staff?.length !== 0; else noItems">
-  <ion-toolbar>
-    <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
-  </ion-toolbar>
+<ion-content>
+  <ng-container *ngIf="staff?.length !== 0; else noItems">
+    <ion-toolbar>
+      <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
+    </ion-toolbar>
 
-  <ion-list>
-    <ng-container
-      *ngFor="let staffMember of staff | filterStaffPipe: searchTerm"
-    >
-      <ion-item-sliding>
-        <ion-item>
-          <ion-avatar slot="start">
-            <ngx-avatar
-              [name]="staffMember.fullName"
-              [src]=""
-              size="40"
-            >
-            </ngx-avatar>
-          </ion-avatar>
-          <ion-icon
-            name="file-tray-full-outline"
-            slot="start"
-            class="ion-margin-end"
-          ></ion-icon>
-          <ion-label>
-            <h2>{{ staffMember.name }}</h2>
-            <p>
-              {{ staffMember.description }}
-            </p>
-          </ion-label>
-        </ion-item>
-        <ion-item-options>
-          <ion-item-option color="danger">
-            <a click=""
-            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-          </ion-item-option>
-          <ion-item-option color="primary">
-            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ng-container>
-  </ion-list>
-</ng-container>
-<ng-template #noItems>
-  <app-empty-content
-    [hidden]="busy"
-    [message]="You have no staff."
-  ></app-empty-content>
-</ng-template>
-<app-skeleton-list
-  *ngIf="busy"
-  [avatar]="true"
-></app-skeleton-list>
+    <ion-list>
+      <ng-container
+        *ngFor="let staffMember of staff | filterStaffPipe: searchTerm"
+      >
+        <ion-item-sliding>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ngx-avatar [name]="staffMember.fullName" [src]="" size="40">
+              </ngx-avatar>
+            </ion-avatar>
+            <ion-icon
+              name="file-tray-full-outline"
+              slot="start"
+              class="ion-margin-end"
+            ></ion-icon>
+            <ion-label>
+              <h2>{{ staffMember.fullName }}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option color="danger">
+              <a click="">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </a>
+            </ion-item-option>
+            <ion-item-option color="primary">
+              <a click="">
+                <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+              </a>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+  <ng-template #noItems>
+    <app-empty-content
+      [hidden]="loading"
+      [message]="'You have no staff.'"
+    ></app-empty-content>
+  </ng-template>
+  <app-skeleton-list *ngIf="loading" [avatar]="true"></app-skeleton-list>
 </ion-content>

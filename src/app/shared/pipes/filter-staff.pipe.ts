@@ -5,7 +5,10 @@ import { Staff } from '../models';
   name: 'filterStaffPipe',
 })
 export class FilterStaffPipe implements PipeTransform {
-  transform(staff: Staff[] | null, searchTerm: string): Staff[] | null {
+  transform(
+    staff: Staff[] | null,
+    searchTerm: undefined | string
+  ): Staff[] | null {
     return !staff || !searchTerm
       ? staff
       : staff.filter(

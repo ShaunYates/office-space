@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Company, Staff, StaffService } from 'src/app/shared';
 
 @Component({
@@ -11,12 +12,16 @@ export class StaffListComponent implements OnInit {
   staffMembers$!: Observable<Staff[]>;
   staff: Staff[] = [];
   searchTerm: undefined | string = undefined;
+  loading = true;
 
   constructor(private readonly staffService: StaffService) {}
 
   ngOnInit(): void {
-    this.staffMembers$ = this.staffService
-      .staff$(this.company.id)
-      .pipe(tap((staff) => (this.staff = staff)));
+    this.staffMembers$ = this.staffService.staff$(this.company.id).pipe(
+      tap((staff) => {
+        this.staff = staff;
+        this.loading = false;
+      })
+    );
   }
 }

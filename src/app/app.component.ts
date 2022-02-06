@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { CompaniesService, Company } from './shared';
 
 @Component({
@@ -10,7 +11,7 @@ import { CompaniesService, Company } from './shared';
 export class AppComponent implements OnInit {
   companies$!: Observable<Company[]>;
   companies: Company[] = [];
-  busy = true;
+  loading = true;
 
   constructor(private readonly companiesService: CompaniesService) {}
 
