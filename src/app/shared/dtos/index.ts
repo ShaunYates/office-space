@@ -1,2 +1,2 @@
-export * from './office.dto';
+export * from './company.dto';
 export * from './staff.dto';

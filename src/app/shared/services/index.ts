@@ -1,2 +1,3 @@
-export * from './offices.service';
+export * from './alert.service';
+export * from './companies.service';
 export * from './staff.service';

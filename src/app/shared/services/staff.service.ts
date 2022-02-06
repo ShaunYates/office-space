@@ -12,10 +12,10 @@ export class StaffService {
 
   constructor(private readonly afs: AngularFirestore) {}
 
-  staff$(officefId: string): Observable<Staff[]> {
+  staff$(companyfId: string): Observable<Staff[]> {
     return this.afs
       .collection<Staff>(this.COLLECTION, (ref) =>
-        ref.where('officeId', '==', officefId)
+        ref.where('companyId', '==', companyfId)
       )
       .valueChanges();
   }

@@ -1,4 +1,4 @@
-export interface OfficeDTO {
+export interface CompanyDTO {
   name: string;
   physicalAddress: string;
   email: string;

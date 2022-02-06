@@ -1,0 +1,39 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title> {{ company.name }} </ion-card-title>
+    <a (click)="editCompany(company)"
+      ><ion-icon name="create-outline"></ion-icon
+    ></a>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-row>
+      <ion-icon name="create-outline"></ion-icon>
+      <p>{{ numberOfStaff }} Staff Members in Company</p>
+    </ion-row>
+    <ion-divider></ion-divider>
+    <ion-row>
+      <p>More info</p>
+      <a (click)="toggleInfo()"
+        ><ion-icon name="chevron-down-outline"></ion-icon
+      ></a>
+      <ng-container *ngIf="toggle">
+        <ion-row>
+          <ion-icon name="call-outline"></ion-icon>
+          <p>{{ company.phoneNumber }}</p>
+        </ion-row>
+        <ion-row>
+          <ion-icon name="mail-outline"></ion-icon>
+          <p>{{ company.email }}</p>
+        </ion-row>
+        <ion-row>
+          <ion-icon name="people-outline"></ion-icon>
+          <p>{{ company.capacity }}</p>
+        </ion-row>
+        <ion-row>
+          <ion-icon name="location-outline"></ion-icon>
+          <p>{{ company.address }}</p>
+        </ion-row>
+      </ng-container>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
