@@ -1,27 +1,29 @@
 # OfficeSpace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
+This project is a JAM stack app (Angular/Firebase) designed for mobile and desktop to allow users to create and manage office space. Specifically making use of AngularFire and Firestore to manage data.
+
+Deployed app available at https://office-space-e7dcc.web.app/ -> deploy by `yarn build` followed by a `firebase deploy`
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Yarn was used as the package manager, v1.22.7 to be specific.
 
-## Code scaffolding
+Run `yarn install` followed by `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The development server connects directly to the Firestore instance, just as the deployed app does.
 
-## Build
+## Project Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Under the app folder there is a shared folder for all shared components, dtos, models, pipes and services. The rest of the project is a flat structure with feature components being imported into the main app module -> possible improvement for scalability would be breaking this up into several modules instead.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Version control
+### Git
 
-## Running end-to-end tests
+A rebasing strategy is used for the main branch for releases so that all commits are squashed into one for each release. Since I am the only one working on this project I pushed my commits straight to develop but ideally feature branches should be used (specific commits/changes can be seen on the develop branch).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Possible Improvements
+- Increased security on Firestore.rules and authentication
+- State management through a Redux tool/technology such as NGXS
+- Deleting all staff associated with an office when an office is deleted
+- Further UI enhancements (picking colour for office, pagination of staff / filtering of offices, allow uses to choose avatar rather than using ngx-avatar, more than just rudimentary form validation etc.)
