@@ -49,5 +49,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SkeletonListComponent {
   @Input() avatar = false;
-  @Input() description = false;
+  @Input() description = true;
 }

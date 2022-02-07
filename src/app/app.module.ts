@@ -1,51 +1,56 @@
-import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';
 import { AvatarModule } from 'ngx-avatar';
 import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
 import { CompanyCardComponent } from './company-card/company-card.component';
-import { CreateCompanyComponent } from './create-company/create-company.component';
-import { EditCompanyComponent } from './edit-company/edit-company.component';
+import { CreateOfficeComponent } from './create-office/create-office.component';
+import { EditOfficeComponent } from './edit-office/edit-office.component';
 import {
   CompaniesService,
-  EmptyContentUiModule,
+  EmptyContentModule,
   FilterStaffPipe,
-  SkeletonListUiModule,
+  SkeletonListModule,
   StaffService,
 } from './shared';
-import { AddStaffMemberComponent } from './view-company/add-staff-member/add-staff-member.component';
-import { StaffListComponent } from './view-company/staff-list/staff-list.component';
-import { ViewCompanyComponent } from './view-company/view-company.component';
+import { AddStaffMemberComponent } from './view-office/add-staff-member/add-staff-member.component';
+import { StaffListComponent } from './view-office/staff-list/staff-list.component';
+import { ViewOfficeComponent } from './view-office/view-office.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateCompanyComponent,
-    ViewCompanyComponent,
+    CreateOfficeComponent,
+    ViewOfficeComponent,
     CompanyCardComponent,
-    EditCompanyComponent,
+    EditOfficeComponent,
     StaffListComponent,
     AddStaffMemberComponent,
     FilterStaffPipe,
   ],
   imports: [
+    CommonModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule.enablePersistence(),
+    // AngularFirestoreModule.enablePersistence(),
     AngularFirestoreModule,
     AvatarModule,
     FlexLayoutModule,
-    IonicModule,
+    IonicModule.forRoot(),
     FormsModule,
-    SkeletonListUiModule,
-    EmptyContentUiModule,
+    SkeletonListModule,
+    EmptyContentModule,
   ],
   providers: [CompaniesService, StaffService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

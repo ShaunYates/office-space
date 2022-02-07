@@ -1,19 +1,27 @@
-<ion-content [fullscreen]="true">
-  <ng-container *ngIf="!loading">
-    <ng-container *ngIf="companies?.length !== 0; else noItems">
-      <ng-container *ngFor="let company of companies">
-        <app-company-card [company]="company"></app-company-card>
+<ion-app>
+  <ion-content>
+    <ion-grid>
+      <ion-row><h1>All Offices</h1></ion-row>
+      <ng-container *ngIf="!loading">
+        <ng-container *ngIf="companies?.length !== 0; else noItems">
+          <ng-container *ngFor="let company of companies">
+            <app-office-card [company]="company"></app-office-card>
+          </ng-container>
+        </ng-container>
+        <ng-template #noItems>
+          <app-empty-content
+            [message]="'No office spaces have been created.'"
+          ></app-empty-content>
+        </ng-template>
       </ng-container>
-    </ng-container>
-    <ng-template #noItems>
-      <app-empty-content
-        [message]="'No office spaces have been created.'"
-      ></app-empty-content>
-    </ng-template>
-    <button class="button button-float" ng-click="showActionsheet()">
-      <i class="icon ion-plus"></i>
-    </button>
-  </ng-container>
 
-  <app-skeleton-list *ngIf="loading"></app-skeleton-list>
-</ion-content>
+      <app-skeleton-list *ngIf="loading"></app-skeleton-list>
+
+      <ion-fab vertical="bottom" horizontal="end">
+        <ion-fab-button (click)="addOffice()">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-grid>
+  </ion-content>
+</ion-app>

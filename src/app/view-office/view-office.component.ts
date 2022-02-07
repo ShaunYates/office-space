@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Company } from '../shared';
 
 @Component({
-  selector: 'app-view-company',
-  templateUrl: './view-company.component.html',
+  selector: 'app-view-office',
+  templateUrl: './view-office.component.html',
 })
-export class ViewCompanyComponent implements OnInit {
+export class ViewOfficeComponent implements OnInit {
   @Input() company!: Company;
 
   constructor() {}

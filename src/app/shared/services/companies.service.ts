@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CompanyDTO } from '../dtos';
 import { Company } from '../models';
@@ -8,7 +8,7 @@ import { Company } from '../models';
   providedIn: 'root',
 })
 export class CompaniesService {
-  private COLLECTION = 'company';
+  private COLLECTION = 'companies';
 
   constructor(private readonly afs: AngularFirestore) {}
 
