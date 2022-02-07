@@ -21,7 +21,7 @@ export class CompanyCardComponent implements OnInit {
       .pipe(tap((staff) => (this.numberOfStaff = staff.length)));
   }
 
-  editCompany(company: Company): void {}
+  editOffice(company: Company): void {}
 
   toggleInfo(): void {
     this.toggle = !this.toggle;

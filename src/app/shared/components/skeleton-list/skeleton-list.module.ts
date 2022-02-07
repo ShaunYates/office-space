@@ -8,4 +8,4 @@ import { SkeletonListComponent } from './skeleton-list.component';
   declarations: [SkeletonListComponent],
   exports: [SkeletonListComponent],
 })
-export class SkeletonListUiModule {}
+export class SkeletonListModule {}
