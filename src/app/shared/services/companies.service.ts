@@ -18,6 +18,13 @@ export class CompaniesService {
       .valueChanges({ idField: 'id' });
   }
 
+  company$(id: string): Observable<Company | undefined> {
+    return this.afs
+      .collection<Company>(this.COLLECTION)
+      .doc(id)
+      .valueChanges({ idField: 'id' });
+  }
+
   async create(company: CompanyDTO): Promise<void> {
     await this.afs.collection(this.COLLECTION).add(company);
   }

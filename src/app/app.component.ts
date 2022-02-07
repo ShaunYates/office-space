@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { CreateOfficeComponent } from './create-office/create-office.component';
 import { CompaniesService, Company } from './shared';
 import { ViewOfficeComponent } from './view-office/view-office.component';
 
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly companiesService: CompaniesService,
-    public viewOfficeModalCtrl: ModalController
+    public viewOfficeModalCtrl: ModalController,
+    public createOfficeModalCtrl: ModalController
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const modal = await this.viewOfficeModalCtrl.create({
       component: ViewOfficeComponent,
       componentProps: {
-        company,
+        companyId: company.id,
       },
       swipeToClose: true,
       cssClass: 'fullscreen',
@@ -46,5 +48,12 @@ export class AppComponent implements OnInit, OnDestroy {
     return await modal.present();
   }
 
-  addOffice(): void {}
+  async addOffice(): Promise<void> {
+    const modal = await this.createOfficeModalCtrl.create({
+      component: CreateOfficeComponent,
+      swipeToClose: true,
+      cssClass: 'fullscreen',
+    });
+    return await modal.present();
+  }
 }
