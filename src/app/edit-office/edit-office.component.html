@@ -109,7 +109,7 @@
         fill="solid"
         color="danger"
         (click)="onDelete()"
-        [disabled]="deleting"
+        [disabled]="deleting || updating"
       >
         <ion-spinner *ngIf="deleting" class="ion-margin-end"></ion-spinner>
         Delete Office
@@ -120,7 +120,7 @@
         fill="solid"
         color="secondary"
         (click)="onUpdate()"
-        [disabled]="!this.form.valid || updating"
+        [disabled]="!this.form.valid || updating || deleting"
       >
         <ion-spinner *ngIf="updating" class="ion-margin-end"></ion-spinner>
         Update Office

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="ion-justify-content-center">Add Staff Member</ion-title>
+    <ion-title class="ion-justify-content-center">Edit Staff Member</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">
         <ion-icon name="close-circle-outline"></ion-icon>
@@ -60,7 +60,7 @@
         [disabled]="!this.form.valid || busy"
       >
         <ion-spinner *ngIf="busy" class="ion-margin-end"></ion-spinner>
-        Add Staff Member
+        Update Staff Member
       </ion-button>
     </ion-buttons>
   </ion-item>

@@ -24,6 +24,7 @@ import {
   ToastService,
 } from './shared';
 import { AddStaffMemberComponent } from './view-office/add-staff-member/add-staff-member.component';
+import { EditStaffMemberComponent } from './view-office/edit-staff-member/edit-staff-member.component';
 import { StaffListComponent } from './view-office/staff-list/staff-list.component';
 import { ViewOfficeComponent } from './view-office/view-office.component';
 
@@ -36,6 +37,7 @@ import { ViewOfficeComponent } from './view-office/view-office.component';
     EditOfficeComponent,
     StaffListComponent,
     AddStaffMemberComponent,
+    EditStaffMemberComponent,
     FilterStaffPipe,
   ],
   imports: [
