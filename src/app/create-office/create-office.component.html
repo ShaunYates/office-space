@@ -1,0 +1,122 @@
+<ion-header class="">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-justify-content-center">New Office</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label class="required" position="stacked">Company Name</ion-label>
+      <ion-input
+        type="text"
+        inputmode="text"
+        formControlName="name"
+        required="true"
+      ></ion-input>
+    </ion-item>
+    <ion-text
+      *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="ion-padding-start"
+      color="danger"
+    >
+      <small>{{ nameError }}</small>
+    </ion-text>
+
+    <ion-item>
+      <ion-label class="required" position="stacked"
+        >Physical Address</ion-label
+      >
+      <ion-input
+        type="text"
+        inputmode="text"
+        formControlName="address"
+        required="true"
+      ></ion-input>
+    </ion-item>
+    <ion-text
+      *ngIf="address.invalid && (address.dirty || address.touched)"
+      class="ion-padding-start"
+      color="danger"
+    >
+      <small>{{ addressError }}</small>
+    </ion-text>
+
+    <ion-item>
+      <ion-label class="required" position="stacked">Email Address</ion-label>
+      <ion-input
+        type="text"
+        inputmode="text"
+        formControlName="email"
+        required="true"
+      ></ion-input>
+    </ion-item>
+    <ion-text
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="ion-padding-start"
+      color="danger"
+    >
+      <small>{{ emailError }}</small>
+    </ion-text>
+
+    <ion-item>
+      <ion-label class="required" position="stacked">Phone Number</ion-label>
+      <ion-input
+        type="text"
+        inputmode="text"
+        formControlName="phoneNumber"
+        required="true"
+      ></ion-input>
+    </ion-item>
+    <ion-text
+      *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)"
+      class="ion-padding-start"
+      color="danger"
+    >
+      <small>{{ phoneNumberError }}</small>
+    </ion-text>
+
+    <ion-item>
+      <ion-label class="required" position="stacked"
+        >Maximum Capacity</ion-label
+      >
+      <ion-input
+        type="number"
+        inputmode="numeric"
+        formControlName="capacity"
+        required="true"
+      ></ion-input>
+    </ion-item>
+    <ion-text
+      *ngIf="capacity.invalid && (capacity.dirty || capacity.touched)"
+      class="ion-padding-start"
+      color="danger"
+    >
+      <small>{{ capacityError }}</small>
+    </ion-text>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-item lines="none">
+    <ion-buttons slot="start">
+      <ion-button type="reset" color="warn">Reset</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button
+        fill="solid"
+        color="secondary"
+        (click)="onSubmit()"
+        [disabled]="!this.form.valid || busy"
+      >
+        <ion-spinner *ngIf="busy" class="ion-margin-end"></ion-spinner>
+        Create
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-footer>
