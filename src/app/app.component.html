@@ -1,12 +1,16 @@
 <ion-app>
   <ion-content>
     <ion-grid>
-      <ion-row><h1>All Offices</h1></ion-row>
+      <h1 class="ion-padding-start">All Offices</h1>
       <ng-container *ngIf="!loading">
         <ng-container *ngIf="companies?.length !== 0; else noItems">
-          <ng-container *ngFor="let company of companies">
-            <app-office-card [company]="company"></app-office-card>
-          </ng-container>
+          <app-company-card
+            *ngFor="let company of companies"
+            [company]="company"
+            [showView]="true"
+            [expanded]="false"
+            (viewOffice)="viewOffice(company)"
+          ></app-company-card>
         </ng-container>
         <ng-template #noItems>
           <app-empty-content
@@ -15,13 +19,16 @@
         </ng-template>
       </ng-container>
 
-      <app-skeleton-list *ngIf="loading"></app-skeleton-list>
-
-      <ion-fab vertical="bottom" horizontal="end">
-        <ion-fab-button (click)="addOffice()">
-          <ion-icon name="add-outline"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+      <ng-container *ngIf="loading">
+        <app-skeleton-card></app-skeleton-card>
+        <app-skeleton-card></app-skeleton-card>
+      </ng-container>
     </ion-grid>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addOffice()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-content>
 </ion-app>

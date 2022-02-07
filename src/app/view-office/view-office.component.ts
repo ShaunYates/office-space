@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Company } from '../shared';
 
 @Component({
@@ -8,7 +9,15 @@ import { Company } from '../shared';
 export class ViewOfficeComponent implements OnInit {
   @Input() company!: Company;
 
-  constructor() {}
+  constructor(public viewOfficeModalCtrl: ModalController) {}
 
   ngOnInit(): void {}
+
+  closeModal(): void {
+    this.viewOfficeModalCtrl.dismiss();
+  }
+
+  editOffice(): void {}
+
+  addStaffMember(): void {}
 }

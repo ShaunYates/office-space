@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -17,6 +18,7 @@ import {
   CompaniesService,
   EmptyContentModule,
   FilterStaffPipe,
+  SkeletonCardModule,
   SkeletonListModule,
   StaffService,
 } from './shared';
@@ -46,7 +48,9 @@ import { ViewOfficeComponent } from './view-office/view-office.component';
     FlexLayoutModule,
     IonicModule.forRoot(),
     FormsModule,
+    HttpClientModule,
     SkeletonListModule,
+    SkeletonCardModule,
     EmptyContentModule,
   ],
   providers: [CompaniesService, StaffService],
