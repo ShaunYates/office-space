@@ -8,7 +8,6 @@
             *ngFor="let company of companies"
             [company]="company"
             [showView]="true"
-            [expanded]="false"
             (viewOffice)="viewOffice(company)"
           ></app-company-card>
         </ng-container>

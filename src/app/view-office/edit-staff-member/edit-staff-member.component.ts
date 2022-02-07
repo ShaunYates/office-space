@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { StaffDTO, StaffService, ToastService } from 'src/app/shared';
+import { Staff, StaffDTO, StaffService, ToastService } from 'src/app/shared';
 
 @Component({
-  selector: 'app-add-staff-member',
-  templateUrl: './add-staff-member.component.html',
+  selector: 'app-edit-staff-member',
+  templateUrl: './edit-staff-member.component.html',
 })
-export class AddStaffMemberComponent implements OnInit {
-  @Input() companyId!: string;
+export class EditStaffMemberComponent implements OnInit {
+  @Input() staff!: Staff;
   form = this.fb.group({
     firstName: [
       '',
@@ -25,13 +25,15 @@ export class AddStaffMemberComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly staffService: StaffService,
     private readonly toastService: ToastService,
-    public addStaffModalCtrl: ModalController
+    public editStaffModalCtrl: ModalController
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form.patchValue({ ...this.staff });
+  }
 
   closeModal(): void {
-    this.addStaffModalCtrl.dismiss();
+    this.editStaffModalCtrl.dismiss();
   }
 
   async onSubmit() {
@@ -39,17 +41,16 @@ export class AddStaffMemberComponent implements OnInit {
       if (this.form.valid) {
         this.busy = true;
         const dto: StaffDTO = {
-          companyId: this.companyId,
           ...this.form.value,
           fullName: `${this.firstName.value} ${this.lastName.value}`,
         };
-        await this.staffService.create(dto);
+        await this.staffService.update(this.staff.id, dto);
 
-        this.toastService.showInfo('Staff member successfully added.');
+        this.toastService.showInfo('Staff member successfully edited.');
         this.closeModal();
       }
     } catch (err) {
-      this.toastService.showError('Error occured adding staff member.');
+      this.toastService.showError('Error occured editing staff member.');
     }
   }
 

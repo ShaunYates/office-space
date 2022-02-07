@@ -35,6 +35,23 @@ ion-modal.fullscreen {
   --border-radius: 0;
 }
 
+ion-modal.popup {
+  --width: 90%;
+  --height: 60%;
+  --border-radius: 0;
+  background-color: rgba(0,0,0,0.85);
+}
+
+@media not all and (min-height: 600px) and (min-width: 768px) {
+  ion-modal ion-backdrop {
+    visibility: visible;
+  }
+}
+
+ion-item-option {
+  font-size: 12px;
+}
+
 ion-item-option ion-icon {
   color: white;
 }

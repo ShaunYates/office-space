@@ -105,7 +105,7 @@
 <ion-footer>
   <ion-item lines="none">
     <ion-buttons slot="start">
-      <ion-button type="reset" color="warn">Reset</ion-button>
+      <ion-button type="cancel" (click)="closeModal()">Cancel</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button
@@ -115,7 +115,7 @@
         [disabled]="!this.form.valid || busy"
       >
         <ion-spinner *ngIf="busy" class="ion-margin-end"></ion-spinner>
-        Create
+        Add Office
       </ion-button>
     </ion-buttons>
   </ion-item>

@@ -19,37 +19,40 @@
         color="tertiary"
         class="ion-padding-end company-details-icon"
       ></ion-icon>
-      <p>{{ numberOfStaff }} Staff Members in Office</p>
+      <ion-skeleton-text
+        *ngIf="loading"
+        animated
+        style="width: 30%"
+      ></ion-skeleton-text>
+      <p *ngIf="!loading">{{ numberOfStaff }} Staff Members in Office</p>
     </ion-row>
 
     <ion-item-divider class="ion-margin-bottom"></ion-item-divider>
 
-    <ng-container *ngIf="!expanded; else companyDetails">
-      <ion-row *ngIf="!toggle" class="ion-justify-content-center">
-        <p class="ion-padding-end">More info</p>
+    <ion-row *ngIf="!toggle" class="ion-justify-content-center">
+      <p class="ion-padding-end">More info</p>
+      <a (click)="toggleInfo()"
+        ><ion-icon
+          name="chevron-down-outline"
+          color="primary"
+          class="company-details-icon"
+        ></ion-icon
+      ></a>
+    </ion-row>
+
+    <ng-container *ngIf="toggle">
+      <ion-row class="ion-justify-content-center ion-margin-bottom">
+        <p class="ion-padding-end">Less info</p>
         <a (click)="toggleInfo()"
           ><ion-icon
-            name="chevron-down-outline"
+            name="chevron-up-outline"
             color="primary"
             class="company-details-icon"
           ></ion-icon
         ></a>
       </ion-row>
 
-      <ng-container *ngIf="toggle">
-        <ion-row class="ion-justify-content-center ion-margin-bottom">
-          <p class="ion-padding-end">Less info</p>
-          <a (click)="toggleInfo()"
-            ><ion-icon
-              name="chevron-up-outline"
-              color="primary"
-              class="company-details-icon"
-            ></ion-icon
-          ></a>
-        </ion-row>
-
-        <ng-template [ngTemplateOutlet]="companyDetails"></ng-template>
-      </ng-container>
+      <ng-template [ngTemplateOutlet]="companyDetails"></ng-template>
     </ng-container>
   </ion-card-content>
 </ion-card>

@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { EditOfficeComponent } from '../edit-office/edit-office.component';
 import { CompaniesService, Company } from '../shared';
+import { AddStaffMemberComponent } from './add-staff-member/add-staff-member.component';
 
 @Component({
   selector: 'app-view-office',
@@ -18,7 +19,8 @@ export class ViewOfficeComponent implements OnInit, OnDestroy {
   constructor(
     private readonly companiesService: CompaniesService,
     public viewOfficeModalCtrl: ModalController,
-    public editOfficeModalCtrl: ModalController
+    public editOfficeModalCtrl: ModalController,
+    public addStaffModalCtrl: ModalController
   ) {}
 
   ngOnInit(): void {
@@ -54,5 +56,15 @@ export class ViewOfficeComponent implements OnInit, OnDestroy {
     return await modal.present();
   }
 
-  addStaffMember(): void {}
+  async addStaffMember(): Promise<void> {
+    const modal = await this.addStaffModalCtrl.create({
+      component: AddStaffMemberComponent,
+      componentProps: {
+        companyId: this.company.id,
+      },
+      swipeToClose: true,
+      cssClass: 'popup',
+    });
+    return await modal.present();
+  }
 }

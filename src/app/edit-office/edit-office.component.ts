@@ -1,7 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { CompaniesService, Company, CompanyDTO, ToastService } from '../shared';
+import {
+  AlertService,
+  CompaniesService,
+  Company,
+  CompanyDTO,
+  ToastService,
+} from '../shared';
 
 @Component({
   selector: 'app-edit-office',
@@ -26,6 +32,7 @@ export class EditOfficeComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly companiesService: CompaniesService,
     private readonly toastService: ToastService,
+    private readonly alertService: AlertService,
     public editOfficeModalCtrl: ModalController
   ) {}
 
@@ -56,14 +63,31 @@ export class EditOfficeComponent implements OnInit {
 
   async onDelete() {
     try {
-      if (this.form.valid) {
-        this.deleting = true;
-        await this.companiesService.delete(this.company.id);
+      this.alertService.showAlert(
+        `You are about to delete this office space. Are you sure you want to continue?`,
+        'Confirm?',
+        undefined,
+        [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => this.alertService.hide(),
+          },
+          {
+            text: 'Delete',
+            cssClass: 'danger',
+            handler: async () => {
+              this.deleting = true;
+              await this.companiesService.delete(this.company.id);
 
-        this.toastService.showInfo('Office space successfully deleted.');
-        // tell parent modal the office has been deleted
-        this.closeModal({ deleted: true });
-      }
+              this.toastService.showInfo('Office space successfully deleted.');
+              // tell parent modal the office has been deleted
+              this.closeModal({ deleted: true });
+            },
+          },
+        ]
+      );
     } catch (err) {
       this.toastService.showError('Error occured deleting office space.');
     }

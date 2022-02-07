@@ -15,11 +15,7 @@
 </ion-header>
 
 <ion-content *ngIf="company">
-  <app-company-card
-    [company]="company"
-    [showView]="false"
-    [expanded]="true"
-  ></app-company-card>
+  <app-company-card [company]="company" [showView]="false"></app-company-card>
   <app-staff-list [company]="company"></app-staff-list>
 </ion-content>
 

@@ -17,19 +17,22 @@ import { Company, Staff, StaffService } from '../shared';
 export class CompanyCardComponent implements OnInit, OnDestroy {
   @Input() company!: Company;
   @Input() showView!: boolean; // whether or not to show icon to view company / office
-  @Input() expanded!: boolean; // expanded view in view office
   @Output() viewOffice: EventEmitter<Event> = new EventEmitter();
   staff$!: Observable<Staff[]>;
   staffSub!: Subscription;
   numberOfStaff: number = 0;
   toggle = false;
+  loading = true;
 
   constructor(private readonly staffService: StaffService) {}
 
   ngOnInit(): void {
-    this.staff$ = this.staffService
-      .staff$(this.company.id)
-      .pipe(tap((staff) => (this.numberOfStaff = staff.length)));
+    this.staff$ = this.staffService.staff$(this.company.id).pipe(
+      tap((staff) => {
+        this.loading = false;
+        this.numberOfStaff = staff.length;
+      })
+    );
     this.staffSub = this.staff$.subscribe();
   }
 
