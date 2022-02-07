@@ -1,4 +1,30 @@
-<ion-content [fullscreen]="true">
-  <app-office-card [company]="company"></app-office-card>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-justify-content-center">Office</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="editOffice()">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-company-card
+    [company]="company"
+    [showView]="false"
+    [expanded]="true"
+  ></app-company-card>
   <app-staff-list [company]="company"></app-staff-list>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addStaffMember()">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

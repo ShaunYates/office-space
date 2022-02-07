@@ -13,7 +13,9 @@ export class CompaniesService {
   constructor(private readonly afs: AngularFirestore) {}
 
   companies$(): Observable<Company[]> {
-    return this.afs.collection<Company>(this.COLLECTION).valueChanges();
+    return this.afs
+      .collection<Company>(this.COLLECTION)
+      .valueChanges({ idField: 'id' });
   }
 
   async create(company: CompanyDTO): Promise<void> {
