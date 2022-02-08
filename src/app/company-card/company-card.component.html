@@ -1,4 +1,4 @@
-<ion-card class="ion-padding-bottom">
+<ion-card class="ion-margin-bottom">
   <ion-card-header>
     <ion-row class="ion-justify-content-center">
       <ion-card-title class="ion-padding-end">
@@ -13,7 +13,7 @@
     </ion-row>
   </ion-card-header>
   <ion-card-content>
-    <ion-row>
+    <ion-item lines="none">
       <ion-icon
         name="people-circle-outline"
         color="tertiary"
@@ -25,7 +25,7 @@
         style="width: 30%"
       ></ion-skeleton-text>
       <p *ngIf="!loading">{{ numberOfStaff }} Staff Members in Office</p>
-    </ion-row>
+    </ion-item>
 
     <ion-item-divider class="ion-margin-bottom"></ion-item-divider>
 
@@ -41,7 +41,7 @@
     </ion-row>
 
     <ng-container *ngIf="toggle">
-      <ion-row class="ion-justify-content-center ion-margin-bottom">
+      <ion-row class="ion-justify-content-center">
         <p class="ion-padding-end">Less info</p>
         <a (click)="toggleInfo()"
           ><ion-icon
@@ -58,36 +58,36 @@
 </ion-card>
 
 <ng-template #companyDetails>
-  <ion-row class="ion-margin-bottom">
+  <ion-item lines="none">
     <ion-icon
       name="call-outline"
       color="primary"
       class="ion-padding-end company-details-icon"
     ></ion-icon>
     <p>{{ company.phoneNumber }}</p>
-  </ion-row>
-  <ion-row class="ion-margin-bottom">
+  </ion-item>
+  <ion-item lines="none">
     <ion-icon
       name="mail-outline"
       color="primary"
       class="ion-padding-end company-details-icon"
     ></ion-icon>
     <p>{{ company.email }}</p>
-  </ion-row>
-  <ion-row class="ion-margin-bottom">
+  </ion-item>
+  <ion-item lines="none">
     <ion-icon
       name="people-outline"
       color="primary"
       class="ion-padding-end company-details-icon"
     ></ion-icon>
     <p>Office capacity: {{ company.capacity }}</p>
-  </ion-row>
-  <ion-row>
+  </ion-item>
+  <ion-item lines="none">
     <ion-icon
       name="location-outline"
       color="primary"
       class="ion-padding-end company-details-icon"
     ></ion-icon>
     <p>{{ company.address }}</p>
-  </ion-row>
+  </ion-item>
 </ng-template>
