@@ -14,7 +14,7 @@ export class CompaniesService {
 
   companies$(): Observable<Company[]> {
     return this.afs
-      .collection<Company>(this.COLLECTION)
+      .collection<Company>(this.COLLECTION, (ref) => ref.orderBy('name'))
       .valueChanges({ idField: 'id' });
   }
 
